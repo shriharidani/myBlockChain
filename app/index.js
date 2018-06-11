@@ -37,6 +37,12 @@ app.post('/transact', (req,res) => {
 	res.redirect('/transactions');
 });
 
+app.get('/mine-transactions', (req, res) => {
+  const block = miner.mine();
+  console.log(`New block added: ${block.toString()}`);
+  res.redirect('/blocks');
+});
+
 app.get('/public-key',(req, res) => {
 	res.json({publicKey: wallet.publicKey});
 });
